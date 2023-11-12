@@ -3,15 +3,21 @@ import 'package:domain/domain.dart';
 
 class UserEntity extends UserModel {
   const UserEntity({
-    int ? id,
-    String ? name,
-    String ? username,
-    String ? email,
+    int? id,
+    String? name,
+    String? username,
+    String? email,
     // AddressModel address;
-    String ? phone,
-    String ? website,
+    String? phone,
+    String? website,
     // final CompanyModel company;
-  });
+  }) : super(
+            id: id,
+            name: name,
+            username: username,
+            email: email,
+            phone: phone,
+            website: website);
 
   factory UserEntity.fromJson(Map<String, dynamic> map) {
     return UserEntity(

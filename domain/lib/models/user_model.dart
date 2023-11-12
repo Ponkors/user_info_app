@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:data/data.dart';
 
 class UserModel extends Equatable {
   final int? id;
@@ -21,16 +22,17 @@ class UserModel extends Equatable {
     // required this.company,
   });
 
+  UserModel.fromUserEntity(UserEntity userEntity)
+      : id = userEntity.id,
+        name = userEntity.name,
+        username = userEntity.username,
+        email = userEntity.email,
+        phone = userEntity.phone,
+        website = userEntity.website;
+
   @override
   List<Object?> get props {
-    return [
-      id,
-      name,
-      username,
-      email,
-      phone,
-      website
-    ];
+    return [id, name, username, email, phone, website];
   }
 }
 

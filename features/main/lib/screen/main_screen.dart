@@ -37,10 +37,12 @@ class MainScreen extends StatelessWidget {
       }
       if (state is UsersLoadingFromNetworkDone) {
         return ListView.builder(
+          padding: const EdgeInsets.all(20),
           itemCount: state.listOfUsers!.length,
           itemBuilder: (context, index) {
-            return UsersWidget(
+            return UserItem(
               user: state.listOfUsers![index],
+              onTap: () {},
             );
           },
         );
