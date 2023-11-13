@@ -3,15 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:main/bloc/main_state.dart';
 import 'package:main/main.dart';
+import 'package:navigation/navigation.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: _buildAppBar(),
+        body: _buildBody(),
+      ),
     );
   }
 
@@ -42,7 +45,11 @@ class MainScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return UserItem(
               user: state.listOfUsers![index],
-              onTap: () {},
+              onTap: () {
+                ExtendedNavigator.of(context).pushSelectedUserScreen(
+                  user: state.listOfUsers![index],
+                );
+              },
             );
           },
         );

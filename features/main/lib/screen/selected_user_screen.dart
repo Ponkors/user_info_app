@@ -3,10 +3,10 @@ import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 
-class SelectDishScreen extends StatelessWidget {
+class SelectedUserScreen extends StatelessWidget {
   final UserModel user;
 
-  const SelectDishScreen({
+  const SelectedUserScreen({
     required this.user,
     super.key,
   });
