@@ -34,17 +34,27 @@ class SelectedUserScreen extends StatelessWidget {
                         ),
                         ListTile(
                           title: Text(
-                            user!.name ?? "Full name ??",
+                            'User name: ${user!.name ?? "N/A"}',
                           ),
                         ),
                         ListTile(
                           title: Text(
-                            user.email ?? "email ??",
+                            'Email: ${user.email ?? "N/A"}',
                           ),
                         ),
                         ListTile(
                           title: Text(
-                            user.phone ?? "phone ??",
+                            'Phone: ${user.phone ?? "N/A"}',
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            'City: ${user.address?.city ?? "N/A"}',
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            'Company: ${user.company?.name ?? "N/A"}',
                           ),
                         ),
                       ],
