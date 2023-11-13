@@ -1,5 +1,3 @@
-import 'package:core/core.dart';
-import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -36,12 +34,17 @@ class SelectedUserScreen extends StatelessWidget {
                         ),
                         ListTile(
                           title: Text(
-                            user!.name ?? "user ??",
+                            user!.name ?? "Full name ??",
                           ),
                         ),
                         ListTile(
                           title: Text(
-                            user.username ?? "userName ??",
+                            user.email ?? "email ??",
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            user.phone ?? "phone ??",
                           ),
                         ),
                       ],

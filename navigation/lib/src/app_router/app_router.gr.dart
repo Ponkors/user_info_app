@@ -20,7 +20,7 @@ class _$AppRouter extends RootStackRouter {
     MainRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const MainScreen(),
+        child: MainScreen(),
       );
     },
     SelectedUserRoute.name: (routeData) {

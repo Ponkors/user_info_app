@@ -1,18 +1,16 @@
 import 'package:core/core.dart';
-import 'package:data/data.dart';
-import 'package:domain/domain.dart';
-import 'package:get_it/get_it.dart';
-import 'package:main/main.dart';
+import 'package:navigation/navigation.dart';
 
-final GetIt getIt = GetIt.instance;
-final DataDI dataDI = DataDI();
+final AppDI appDI = AppDI();
 
-class DataDI {
-  Future<void> initDependencies() async {
-    getIt.registerSingleton<Dio>(Dio());
-    getIt.registerSingleton<UsersApiService>(UsersApiService(getIt()));
-    getIt.registerSingleton<UsersRepository>(UsersRepositoryImpl(getIt()));
-    getIt.registerSingleton<GetUsersUseCase>(GetUsersUseCase(getIt()));
-    getIt.registerFactory<MainBloc>(() => MainBloc(getIt()));
+class AppDI {
+  void initDependencies() {
+    _setupNavigationDependencies();
+  }
+
+  void _setupNavigationDependencies() {
+    getIt.registerSingleton<AppRouter>(
+      AppRouter(),
+    );
   }
 }

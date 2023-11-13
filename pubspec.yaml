@@ -10,12 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
   core:
     path: ./core
   core_ui:
@@ -29,7 +23,24 @@ dev_dependencies:
   main:
     path: ./features/main
 
+  cupertino_icons: ^1.0.2
+  flutter_launcher_icons: ^0.13.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+
   flutter_lints: ^2.0.0
+  
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/app_icon.webp"
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/icons/
+    

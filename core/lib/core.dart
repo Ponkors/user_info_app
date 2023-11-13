@@ -10,4 +10,5 @@ export 'package:equatable/equatable.dart';
 export 'resources/data_state.dart';
 export 'constants/constants.dart';
 export 'usecase/usecase.dart';
+export 'di/data_di.dart';
 export 'di/app_di.dart';

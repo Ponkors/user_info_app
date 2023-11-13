@@ -6,7 +6,7 @@ import 'package:main/main.dart';
 import 'package:navigation/navigation.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MainScreen extends StatelessWidget {
   _buildAppBar() {
     return AppBar(
       title: Text(
-        'Users Info',
+        "User's Info",
         style: TextStyle(
           color: Colors.black,
           fontSize: 20,
@@ -31,30 +31,32 @@ class MainScreen extends StatelessWidget {
   }
 
   _buildBody() {
-    return BlocBuilder<MainBloc, MainState>(builder: (_, state) {
-      if (state is UsersLoadingFromNetwork) {
-        return const Center(child: CupertinoActivityIndicator());
-      }
-      if (state is UsersLoadingFromNetworkError) {
-        return const Center(child: Icon(Icons.refresh));
-      }
-      if (state is UsersLoadingFromNetworkDone) {
-        return ListView.builder(
-          padding: const EdgeInsets.all(20),
-          itemCount: state.listOfUsers!.length,
-          itemBuilder: (context, index) {
-            return UserItem(
-              user: state.listOfUsers![index],
-              onTap: () {
-                ExtendedNavigator.of(context).pushSelectedUserScreen(
-                  user: state.listOfUsers![index],
-                );
-              },
-            );
-          },
-        );
-      }
-      return const SizedBox();
-    });
+    return BlocBuilder<MainBloc, MainState>(
+      builder: (_, state) {
+        if (state is UsersLoadingFromNetwork) {
+          return const Center(child: CupertinoActivityIndicator());
+        }
+        if (state is UsersLoadingFromNetworkError) {
+          return const Center(child: Icon(Icons.refresh));
+        }
+        if (state is UsersLoadingFromNetworkDone) {
+          return ListView.builder(
+            padding: const EdgeInsets.all(20),
+            itemCount: state.listOfUsers!.length,
+            itemBuilder: (context, index) {
+              return UserItem(
+                user: state.listOfUsers![index],
+                onTap: () {
+                  context.router
+                      .push(SelectedUserRoute(user: state.listOfUsers![index]));
+                  ;
+                },
+              );
+            },
+          );
+        }
+        return const SizedBox();
+      },
+    );
   }
 }
