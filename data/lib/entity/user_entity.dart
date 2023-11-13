@@ -7,17 +7,19 @@ class UserEntity extends UserModel {
     String? name,
     String? username,
     String? email,
-    // AddressModel address;
+    AddressModel? address,
     String? phone,
     String? website,
-    // final CompanyModel company;
+    CompanyModel? company,
   }) : super(
             id: id,
             name: name,
             username: username,
             email: email,
             phone: phone,
-            website: website);
+            website: website,
+            address: address,
+            company: company);
 
   factory UserEntity.fromJson(Map<String, dynamic> map) {
     return UserEntity(
@@ -25,14 +27,14 @@ class UserEntity extends UserModel {
       name: map['name'] ?? "",
       username: map['username'] ?? "",
       email: map['email'] ?? "",
-      // address: map['address'] != null
-      //     ? Address.fromJson(map['address'] as Map<String, dynamic>)
-      //     : null,
+      address: map['address'] != null
+          ? AddressModel.fromJson(map['address'] as Map<String, dynamic>)
+          : null,
       phone: map['phone'] ?? "",
       website: map['website'] ?? "",
-      // company: map['company'] != null
-      //     ? Company.fromJson(map['company'] as Map<String, dynamic>)
-      //     : null,
+      company: map['company'] != null
+          ? CompanyModel.fromJson(map['company'] as Map<String, dynamic>)
+          : null,
     );
   }
 }

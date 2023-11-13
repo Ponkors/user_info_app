@@ -47,8 +47,9 @@ class MainScreen extends StatelessWidget {
               return UserItem(
                 user: state.listOfUsers![index],
                 onTap: () {
-                  context.router
-                      .push(SelectedUserRoute(user: state.listOfUsers![index]));
+                  context.router.push(SelectedUserRoute(
+                    user: state.listOfUsers![index],
+                  ));
                   ;
                 },
               );
