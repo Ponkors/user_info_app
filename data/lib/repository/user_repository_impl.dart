@@ -6,28 +6,38 @@ import 'package:retrofit/retrofit.dart';
 
 class UsersRepositoryImpl implements UsersRepository {
   final UsersApiService _usersApiService;
+  final HiveProvider _hiveProvider;
 
-  UsersRepositoryImpl(this._usersApiService);
+  UsersRepositoryImpl(this._usersApiService, this._hiveProvider);
 
   @override
   Future<DataState<List<UserEntity>>> getUsersInfo() async {
-    try {
-      final httpResponse = await _usersApiService.getUsersInfo();
+    final bool haveInternetConnection =
+        await InternetConnectionInfo.checkInternetConnection();
 
-      if (httpResponse.response.statusCode == HttpStatus.ok) {
-        return DataSuccess(httpResponse.data);
-      } else {
-        return DataFailed(
-          DioError(
-            error: httpResponse.response.statusMessage,
-            response: httpResponse.response,
-            type: DioErrorType.badResponse,
-            requestOptions: httpResponse.response.requestOptions,
-          ),
-        );
+    if (haveInternetConnection) {
+      try {
+        final httpResponse = await _usersApiService.getUsersInfo();
+
+        if (httpResponse.response.statusCode == HttpStatus.ok) {
+          final List<UserEntity> result = await _hiveProvider.getCachedUsers();
+          return DataSuccess(result);
+        } else {
+          return DataFailed(
+            DioError(
+              error: httpResponse.response.statusMessage,
+              response: httpResponse.response,
+              type: DioErrorType.badResponse,
+              requestOptions: httpResponse.response.requestOptions,
+            ),
+          );
+        }
+      } on DioError catch (e) {
+        return DataFailed(e);
       }
-    } on DioError catch (e) {
-      return DataFailed(e);
+    } else {
+      final List<UserEntity> result = await _hiveProvider.getCachedUsers();
+      return DataSuccess(result);
     }
   }
 }
