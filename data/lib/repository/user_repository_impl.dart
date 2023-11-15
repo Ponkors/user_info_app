@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:core/core.dart';
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
-import 'package:retrofit/retrofit.dart';
 
 class UsersRepositoryImpl implements UsersRepository {
   final UsersApiService _usersApiService;
@@ -20,8 +19,11 @@ class UsersRepositoryImpl implements UsersRepository {
         final httpResponse = await _usersApiService.getUsersInfo();
 
         if (httpResponse.response.statusCode == HttpStatus.ok) {
-          final List<UserEntity> result = await _hiveProvider.getCachedUsers();
-          return DataSuccess(result);
+          final List<UserModel> users = httpResponse.data
+              .map((UserEntity e) => UserMapper.toModel(e))
+              .toList();
+          await _hiveProvider.saveUsersToCache(users);
+          return DataSuccess(httpResponse.data);
         } else {
           return DataFailed(
             DioError(
@@ -36,8 +38,8 @@ class UsersRepositoryImpl implements UsersRepository {
         return DataFailed(e);
       }
     } else {
-      final List<UserEntity> result = await _hiveProvider.getCachedUsers();
-      return DataSuccess(result);
+      final List<UserEntity> cachedUsers = await _hiveProvider.getCachedUsers();
+      return DataSuccess(cachedUsers);
     }
   }
 }

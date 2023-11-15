@@ -43,14 +43,14 @@ class AddressModel {
   final String suite;
   final String city;
   final String zipcode;
-  final GeoModel geo;
+  // final GeoModel geo;
 
   const AddressModel({
-    required this.street,
-    required this.suite,
+    this.street = '',
+    this.suite = '',
     required this.city,
-    required this.zipcode,
-    required this.geo,
+    this.zipcode = '',
+    // this.geo,
   });
 
   factory AddressModel.fromJson(Map<String, dynamic> json) {
@@ -59,7 +59,7 @@ class AddressModel {
       suite: json["suite"],
       city: json["city"],
       zipcode: json["zipcode"],
-      geo: GeoModel.fromJson(json["geo"]),
+      // geo: GeoModel.fromJson(json["geo"]),
     );
   }
 }
@@ -85,8 +85,8 @@ class CompanyModel {
 
   const CompanyModel({
     required this.name,
-    required this.catchPhrase,
-    required this.bs,
+    this.catchPhrase = '',
+    this.bs = '',
   });
 
   factory CompanyModel.fromJson(Map<String, dynamic> json) {

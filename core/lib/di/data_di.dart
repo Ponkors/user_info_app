@@ -11,22 +11,25 @@ class DataDI {
   Future<void> initDependencies() async {
     getIt.registerSingleton<Dio>(Dio());
     getIt.registerSingleton<UsersApiService>(UsersApiService(getIt()));
-    getIt.registerSingleton<HiveProvider>(HiveProvider(getIt()));
+    getIt.registerLazySingleton<HiveProvider>(
+      () => HiveProviderImpl(),
+    );
     getIt.registerSingleton<UsersRepository>(
         UsersRepositoryImpl(getIt(), getIt()));
     getIt.registerSingleton<GetUsersUseCase>(GetUsersUseCase(getIt()));
     getIt.registerFactory<MainBloc>(() => MainBloc(getIt()));
 
+    void _initHiveAdapter() {
+      getIt.registerLazySingleton<UserEntityAdapter>(
+        () => UserEntityAdapter(),
+      );
+    }
+
+    _initHiveAdapter();
     Future<void> _initHive() async {
       await Hive.initFlutter();
       Hive.registerAdapter(
         getIt.get<UserEntityAdapter>(),
-      );
-    }
-
-    void _initHiveAdapter() {
-      getIt.registerLazySingleton<UserEntityAdapter>(
-        () => UserEntityAdapter(),
       );
     }
 

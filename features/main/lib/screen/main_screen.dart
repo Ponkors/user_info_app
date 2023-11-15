@@ -50,7 +50,6 @@ class MainScreen extends StatelessWidget {
                   context.router.push(SelectedUserRoute(
                     user: state.listOfUsers![index],
                   ));
-                  ;
                 },
               );
             },

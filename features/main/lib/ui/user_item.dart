@@ -45,30 +45,6 @@ class UserItem extends StatelessWidget {
                     user!.name ?? "?",
                   ),
                   SizedBox(height: 5),
-                  Row(
-                    children: <Widget>[
-                      // DishCardButton(
-                      //   label: '${'menuScreen.add'.tr()}',
-                      //   onPressed: () {
-                      //     cartBloc.add(
-                      //       AddDishToCart(dish: dish),
-                      //     );
-                      //     final SnackBar snackBar = SnackBar(
-                      //       content: Text(
-                      //         'menuScreen.dishAddedToTheCart'.tr(),
-                      //         style: GoogleFonts.poppins(
-                      //           textStyle: AppFonts.normal_18,
-                      //         ),
-                      //       ),
-                      //       behavior: SnackBarBehavior.floating,
-                      //       backgroundColor: themeData.primaryColor,
-                      //       duration: const Duration(seconds: 2),
-                      //     );
-                      //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      //   },
-                      // ),
-                    ],
-                  ),
                 ],
               ),
             ],
