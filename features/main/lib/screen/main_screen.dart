@@ -6,8 +6,6 @@ import 'package:main/main.dart';
 import 'package:navigation/navigation.dart';
 
 class MainScreen extends StatelessWidget {
-  final _appRouter = AppRouter();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -16,6 +16,7 @@ class UserEntityAdapter extends TypeAdapter<UserEntity> {
         final value = reader.read();
         data[key] = value;
       } catch (e) {
+        // Only to check what's the problem with hive reader.
         print('Error reading field: $e');
       }
     }

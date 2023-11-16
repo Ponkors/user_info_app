@@ -1,8 +1,5 @@
-import 'package:core/core.dart';
-import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:main/bloc/main_bloc.dart';
 
 class UserItem extends StatelessWidget {
   final UserModel? user;
@@ -16,8 +13,6 @@ class UserItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    final MainBloc mainBloc = BlocProvider.of<MainBloc>(context);
     return InkWell(
       splashColor: Colors.blue,
       borderRadius: const BorderRadius.all(

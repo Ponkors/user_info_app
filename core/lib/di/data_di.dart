@@ -1,7 +1,6 @@
 import 'package:core/core.dart';
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
-import 'package:get_it/get_it.dart';
 import 'package:main/main.dart';
 
 final GetIt getIt = GetIt.instance;
