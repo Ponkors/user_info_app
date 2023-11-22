@@ -35,11 +35,9 @@ class UserItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Icon(Icons.person),
-                  Text(
-                    user!.name ?? "?",
-                  ),
-                  SizedBox(height: 5),
+                  const Icon(Icons.person),
+                  Text(user!.name ?? "?"),
+                  const SizedBox(height: 5),
                 ],
               ),
             ],

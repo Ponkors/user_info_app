@@ -6,6 +6,8 @@ import 'package:main/main.dart';
 import 'package:navigation/navigation.dart';
 
 class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +20,7 @@ class MainScreen extends StatelessWidget {
 
   _buildAppBar() {
     return AppBar(
-      title: Text(
+      title: const Text(
         "User's Info",
         style: TextStyle(
           color: Colors.black,
@@ -45,9 +47,11 @@ class MainScreen extends StatelessWidget {
               return UserItem(
                 user: state.listOfUsers![index],
                 onTap: () {
-                  context.router.push(SelectedUserRoute(
-                    user: state.listOfUsers![index],
-                  ));
+                  context.router.push(
+                    SelectedUserRoute(
+                      user: state.listOfUsers![index],
+                    ),
+                  );
                 },
               );
             },

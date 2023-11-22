@@ -34,19 +34,18 @@ class UsersWidget extends StatelessWidget {
           children: [
             Text(
               user!.email ?? '!',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 color: Colors.black,
               ),
             ),
             Text(
               user!.name ?? '!',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 color: Colors.black,
               ),
             ),
-            // Expanded
           ],
         ),
       ),

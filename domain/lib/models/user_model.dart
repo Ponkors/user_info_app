@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
-import 'package:data/data.dart';
+import 'package:domain/models/address_model.dart';
+import 'package:domain/models/company_model.dart';
 
 class UserModel extends Equatable {
   final int? id;
@@ -22,78 +23,8 @@ class UserModel extends Equatable {
     this.company,
   });
 
-  UserModel.fromUserEntity(UserEntity userEntity)
-      : id = userEntity.id,
-        name = userEntity.name,
-        username = userEntity.username,
-        email = userEntity.email,
-        phone = userEntity.phone,
-        website = userEntity.website,
-        address = userEntity.address,
-        company = userEntity.company;
-
   @override
   List<Object?> get props {
     return [id, name, username, email, address, phone, website, company];
-  }
-}
-
-class AddressModel {
-  final String street;
-  final String suite;
-  final String city;
-  final String zipcode;
-  // final GeoModel geo;
-
-  const AddressModel({
-    this.street = '',
-    this.suite = '',
-    required this.city,
-    this.zipcode = '',
-    // this.geo,
-  });
-
-  factory AddressModel.fromJson(Map<String, dynamic> json) {
-    return AddressModel(
-      street: json["street"],
-      suite: json["suite"],
-      city: json["city"],
-      zipcode: json["zipcode"],
-      // geo: GeoModel.fromJson(json["geo"]),
-    );
-  }
-}
-
-class GeoModel {
-  final String lat;
-  final String lng;
-
-  const GeoModel({required this.lat, required this.lng});
-
-  factory GeoModel.fromJson(Map<String, dynamic> json) {
-    return GeoModel(
-      lat: json["lat"],
-      lng: json["lng"],
-    );
-  }
-}
-
-class CompanyModel {
-  final String name;
-  final String catchPhrase;
-  final String bs;
-
-  const CompanyModel({
-    required this.name,
-    this.catchPhrase = '',
-    this.bs = '',
-  });
-
-  factory CompanyModel.fromJson(Map<String, dynamic> json) {
-    return CompanyModel(
-      name: json["name"],
-      catchPhrase: json["catchPhrase"],
-      bs: json["bs"],
-    );
   }
 }

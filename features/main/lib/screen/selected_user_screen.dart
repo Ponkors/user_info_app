@@ -28,33 +28,21 @@ class SelectedUserScreen extends StatelessWidget {
             elevation: 5,
             child: Column(
               children: <Widget>[
-                const SizedBox(
-                  height: 10,
+                const SizedBox(height: 10),
+                ListTile(
+                  title: Text('User name: ${user.name ?? "N/A"}'),
                 ),
                 ListTile(
-                  title: Text(
-                    'User name: ${user.name ?? "N/A"}',
-                  ),
+                  title: Text('Email: ${user.email ?? "N/A"}'),
                 ),
                 ListTile(
-                  title: Text(
-                    'Email: ${user.email ?? "N/A"}',
-                  ),
+                  title: Text('Phone: ${user.phone ?? "N/A"}'),
                 ),
                 ListTile(
-                  title: Text(
-                    'Phone: ${user.phone ?? "N/A"}',
-                  ),
+                  title: Text('City: ${user.address?.city ?? "N/A"}'),
                 ),
                 ListTile(
-                  title: Text(
-                    'City: ${user.address?.city ?? "N/A"}',
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    'Company: ${user.company?.name ?? "N/A"}',
-                  ),
+                  title: Text('Company: ${user.company?.name ?? "N/A"}'),
                 ),
               ],
             ),
