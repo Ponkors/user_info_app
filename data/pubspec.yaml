@@ -15,11 +15,19 @@ dependencies:
   domain:
     path: ../domain
 
+  # Ask question about it
+  hive: ^2.2.3
+  hive_flutter: ^1.0.0
+  equatable: ^2.0.5
+  dio: ^5.3.3
+  retrofit: ^4.0.3
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.6
+  retrofit_generator: ^8.0.3
 
 flutter:
